@@ -2,24 +2,12 @@
  * Main JS file for Casper behaviours
  */
 
-/*globals jQuery, document */
-(function ($) {
-    "use strict";
-
-    $(document).ready(function(){
-
-        // On the home page, move the blog icon inside the header 
-        // for better relative/absolute positioning.
-
-        //$("#blog-logo").prependTo("#site-head-content");
-
-		$('.post-date').each(function(i, date) {
-			var $date = $(date);
-			$date.html(
-				moment($date.attr('datetime'))
-					.format('dddd, MMMM DD, YYYY')
-			);
+(function() {
+	document.addEventListener('DOMContentLoaded', function(e) {
+		const dateElements = document.querySelectorAll('.post-date');
+		Array.prototype.forEach.call(elements, function(el, i){
+			const dateFormat = moment(el.getAttribute('datetime')).format('dddd, MMMM DD, YYYY');
+			el.innerHTML = dateFormat;
 		});
-    });
-
-}(jQuery));
+	});
+})();
